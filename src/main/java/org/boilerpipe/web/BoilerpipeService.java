@@ -3,6 +3,7 @@ package org.boilerpipe.web;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.Produces;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,19 +23,19 @@ public class BoilerpipeService {
   @GET
   @Path("/content")
   @Produces("text/json")
-  public Map<String, String> getContent() {
+  public Map<String, String> getContent(@QueryParam("url") String url) {
     Map<String, String> cont = new HashMap<String, String>();
-    String u="http://www.spiegel.de/wissenschaft/natur/0,1518,789176,00.html";
-    cont.put("url", u);
+    cont.put("url", url);
 
     try {
-		URL url = new URL(u);
+		URL u = new URL(url);
 
 		final BoilerpipeExtractor extractor = CommonExtractors.ARTICLE_EXTRACTOR;
 
 		final HtmlArticleExtractor htmlExtr = HtmlArticleExtractor.INSTANCE;
+   
 		
-		String html = htmlExtr.process(extractor, url);
+		String html = htmlExtr.process(extractor, u);
 		
     cont.put("content", html);
     }catch(Exception ex) {
