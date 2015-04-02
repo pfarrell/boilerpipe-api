@@ -28,16 +28,11 @@ public class BoilerpipeService {
     cont.put("url", url);
 
     try {
-		URL u = new URL(url);
-
-		final BoilerpipeExtractor extractor = CommonExtractors.ARTICLE_EXTRACTOR;
-
-		final HtmlArticleExtractor htmlExtr = HtmlArticleExtractor.INSTANCE;
-   
-		
-		String html = htmlExtr.process(extractor, u);
-		
-    cont.put("content", html);
+      URL u = new URL(url);
+      final BoilerpipeExtractor extractor = CommonExtractors.ARTICLE_EXTRACTOR;
+      final HtmlArticleExtractor htmlExtr = HtmlArticleExtractor.INSTANCE;
+      String html = htmlExtr.process(extractor, u);
+      cont.put("content", html);
     }catch(Exception ex) {
       ex.printStackTrace();
     }
