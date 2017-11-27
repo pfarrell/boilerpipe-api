@@ -1,13 +1,15 @@
 # boilerpipe-api
 A JSON Api for Boilerpipe
 
-###routes
+### routes
+
 |route|supported params|note|
 |---|---|---|
 |/content|[url, extractor, words]|retreives article content|
 |/images|[url, extractor, words]|extracts images from web page|
 
-###query string parameters
+### query string parameters
+
 |name|value|
 |---|---|
 |url|url to process|
